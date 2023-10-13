@@ -10,13 +10,24 @@
 //   return max
 // }
 
-function MaxValue (shares) {
-  let minPrice = shares[0], maxProfit = -Infinity; 
-  // Or maxProfit = 0 if I want to know only how much I won and not if I lost
+// function MaxValue (shares) {
+//   let minPrice = shares[0], maxProfit = -Infinity; 
+//   // Or maxProfit = 0 if I want to know only how much I won and not if I lost
 
-  for(let i = 1; i < shares.length; i++){
-    if(shares[i] < minPrice) minPrice = shares[i];
-    if(shares[i] - minPrice > maxProfit) maxProfit = shares[i] - minPrice;
+//   for(let i = 1; i < shares.length; i++){
+//     if(shares[i] < minPrice) minPrice = shares[i];
+//     if(shares[i] - minPrice > maxProfit) maxProfit = shares[i] - minPrice;
+//   }
+
+//   return maxProfit;
+// }
+
+function MaxValue (shares) {
+  let minPrice = shares[0], maxProfit = -Infinity;
+
+  for(let i = 1; i < shares.length; i++) {
+    maxProfit = Math.max(maxProfit, shares[i] - minPrice);
+    minPrice = Math.min(minPrice, shares[i]);
   }
 
   return maxProfit;
